@@ -1,0 +1,12 @@
+# database
+mysql_data/
+
+# WordPress uploads
+wp/wp-content/uploads/
+
+# env file
+.env
+
+# system files
+.DS_Store
+Thumbs.db

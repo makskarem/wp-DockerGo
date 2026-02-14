@@ -1,0 +1,89 @@
+# Версия синтаксиса docker-compose
+version: '3.8'
+
+# Определяем сервисы (контейнеры)
+services:
+
+  # Сервис nginx (веб-сервер)
+  nginx:
+
+    # Используем лёгкий официальный образ nginx
+    image: nginx:alpine
+
+    # Имя контейнера
+    container_name: wp_nginx
+
+    # Пробрасываем порт 80 контейнера на порт 80 хоста
+    ports:
+      - "80:80"
+
+    # Подключаем тома (volumes)
+    volumes:
+
+      # Подключаем папку WordPress с хоста в контейнер
+      - ./wp:/var/www/html
+
+      # Подключаем наш nginx конфиг внутрь контейнера
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+    # Говорим, что nginx зависит от php
+    depends_on:
+      - php
+
+    # Автоматически перезапускать контейнер при падении
+    restart: unless-stopped
+
+  # Сервис PHP (php-fpm)
+  php:
+
+    # Собираем образ из папки ./php (где лежит Dockerfile)
+    build: ./php
+
+    # Имя контейнера
+    container_name: wp_php
+
+    # Подключаем ту же папку WordPress
+    volumes:
+      - ./wp:/var/www/html
+
+    # PHP зависит от MySQL
+    depends_on:
+      - mysql
+
+    # Перезапуск при падении
+    restart: unless-stopped
+
+  # Сервис базы данных MySQL
+  mysql:
+
+    # Используем официальный образ MySQL 8
+    image: mysql:8.0
+
+    # Имя контейнера
+    container_name: wp_mysql
+
+    # Переменные окружения для создания базы и пользователя
+    environment:
+
+      # Имя базы данных
+      MYSQL_DATABASE: wordpress
+
+      # Пользователь базы
+      MYSQL_USER: wp_user
+
+      # Пароль пользователя
+      MYSQL_PASSWORD: wp_pass
+
+      # Пароль root пользователя MySQL
+      MYSQL_ROOT_PASSWORD: root_pass
+
+    # Создаём volume для сохранения данных базы
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+    # Перезапуск при падении
+    restart: unless-stopped
+
+# Объявляем именованный volume для MySQL
+volumes:
+  mysql_data:
