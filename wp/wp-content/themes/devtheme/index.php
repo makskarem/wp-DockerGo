@@ -19,6 +19,11 @@
         <div>
             <?php the_content(); ?>
         </div>
+
+        <div> 
+            <?php the_author(); ?>
+        </div>
+        <p><?php the_date() ?></p>
     </article>
 
 <?php 
