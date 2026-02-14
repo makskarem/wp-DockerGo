@@ -2,13 +2,36 @@
 
 <main>
 
-    <h2>
-        Welcome to my custom them
-    </h2>
+    <?php 
+    
+    if (have_posts()):
+        while (have_posts()):
+             the_post();
+        
+    
+    
+    ?>
 
-    <p>
-        This is my first WordPress them
-    </p>
+    <article>
+        <h2>
+            <?php the_title(); ?>
+        </h2>
+        <div>
+            <?php the_content(); ?>
+        </div>
+    </article>
+
+<?php 
+    
+    endwhile;
+
+    else:
+        echo "<p>No post found</p>";
+
+    endif;
+
+    
+?>
 
 </main>
 
