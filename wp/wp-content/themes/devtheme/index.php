@@ -1,44 +1,29 @@
 <?php get_header(); ?>
 
+
 <main>
 
-    <?php 
+    <?php if (have_posts()): ?>
+    <?php while (have_posts()): the_post(); ?>
     
-    if (have_posts()):
-        while (have_posts()):
-             the_post();
-        
-    
-    
-    ?>
-
     <article>
         <h2>
-            <?php the_title(); ?>
+            <?php the_title() ?>
         </h2>
+    
         <div>
-            <?php the_content(); ?>
+            <?php the_content() ?>
         </div>
-
-        <div> 
-            <?php the_author(); ?>
-        </div>
-        <p><?php the_date() ?></p>
+    
+        <small>
+            Автор: <?php the_author() ?> <br>
+            Дата создания: <?php the_date() ?>
+        </small>
     </article>
-
-<?php 
     
-    endwhile;
-
-    else:
-        echo "<p>No post found</p>";
-
-    endif;
-
-    
-?>
+    <?php endwhile ?>
+    <?php endif ?>
 
 </main>
-
 
 <?php get_footer(); ?>

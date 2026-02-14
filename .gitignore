@@ -1,12 +1,19 @@
-# database
-mysql_data/
+# WordPress core
+wp/wp-admin/
+wp/wp-includes/
 
-# WordPress uploads
+# uploads
 wp/wp-content/uploads/
 
-# env file
-.env
+# cache
+wp/wp-content/cache/
 
-# system files
+# config
+wp/wp-config.php
+
+# docker volumes
+mysql_data/
+
+# OS
 .DS_Store
 Thumbs.db
