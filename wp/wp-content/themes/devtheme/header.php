@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes() ?>>
+
 <head>
-    <meta charset="UTF-8">
-    <!-- WordPress вставляет сюда стили, скрипты и meta -->
+    <meta charset=<?php bloginfo('charset') ?>>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- wp_head — ОБЯЗАТЕЛЬНО. WordPress вставляет сюда CSS, JS, meta -->
     <?php wp_head() ?>
+
 </head>
-<body>
+
+<body <?php body_class() ?>>
+
     <header>
-        <h1>My first WordPress theme</h1>
+        <?php bloginfo('name') ?>
     </header>
-</body>
-</html>
+
+<main>
 
 
-<!-- ОБЪЯСНЕНИЕ
+    <!-- ОБЪЯСНЕНИЕ
 wp_head()
 
 Она позволяет WordPress вставлять:

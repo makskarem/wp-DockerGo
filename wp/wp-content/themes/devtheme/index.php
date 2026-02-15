@@ -5,48 +5,31 @@ get_header() → header.php -->
 
 <?php get_header(); ?>
 
-<main>
+<?php if (have_posts()) : ?>
 
-<?php 
+    <?php while (have_posts()) : the_post(); ?>
 
-if (have_posts()):  // если есть посты
+        <article>
 
-    while(have_posts()):  // цикл постов
-        
-        the_post(); // загружаем данные текущего поста
+            <h2><?php the_title(); ?></h2>
 
-?>
+            <p>
+                Автор: <?php the_author(); ?><br>
+                Дата: <?php the_date(); ?>
+            </p>
 
-<article>
-    <h2>
-        <?php the_title() ?>
-    </h2>
+            <?php the_content(); ?>
 
-    <p>
-        Автор: <?php the_author() ?>
-    </p>
+        </article>
 
-    <p>
-        Дата: <?php the_date() ?>
-    </p>
+    <?php endwhile; ?>
 
-    <div>
-        <?php the_content() ?>
-    </div>
+<?php else : ?>
 
-</article>
+    <p>Нет постов</p>
 
-<?php 
+<?php endif; ?>
 
-    endwhile;
+<?php get_footer(); ?>
 
-else:
-    echo "Нет постов";
-endif;
-
-?>
-
-</main>
-
-<?php get_footer() ?>  
 <!-- //get_footer() → footer.php -->

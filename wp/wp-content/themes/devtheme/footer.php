@@ -1,12 +1,15 @@
+</main>
+
 <footer>
 
+    <!-- date показывает текущий год -->
     <p>
-        My footer(2026)
-    </p>
-
+        © <?php echo date('Y') ?> My footer   
+    </p> 
+    
 </footer>
 
-<?php wp_footer() ?>
+<?php wp_footer() ?> 
 
 </body>
 </html>
