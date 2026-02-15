@@ -2,12 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>
-        <?php bloginfo('name'); ?>
-    </title>
+    <!-- WordPress вставляет сюда стили, скрипты и meta -->
+    <?php wp_head() ?>
 </head>
 <body>
-    <h1><?php bloginfo('name'); ?></h1>
-    <p><?php bloginfo('description'); ?></p>
+    <header>
+        <h1>My first WordPress theme</h1>
+    </header>
 </body>
 </html>
+
+
+<!-- ОБЪЯСНЕНИЕ
+wp_head()
+
+Она позволяет WordPress вставлять:
+
+CSS
+JS
+meta
+плагины
+
+Без неё плагины и стили не будут работать. -->
