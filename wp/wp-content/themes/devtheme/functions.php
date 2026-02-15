@@ -29,4 +29,12 @@ function devtheme_register_menus() {
     
 }
 
+// WordPress в определённый момент говорит:
+
+// "Я сейчас на этапе after_setup_theme. Есть ли функции, которые нужно выполнить?"
+
+// И выполняет всё, что зарегистрировано через:
+
+// add_action('after_setup_theme', 'имя_функции');
+
 add_action('after_setup_theme', 'devtheme_register_menus');
