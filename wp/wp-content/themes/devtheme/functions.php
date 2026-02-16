@@ -63,6 +63,7 @@ function devtheme_register_menus() {
 
 add_action('after_setup_theme', 'devtheme_register_menus');
 
+add_theme_support('post-thumbnails');
 
 // WordPress в определённый момент говорит:
 
