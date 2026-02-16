@@ -1,6 +1,4 @@
-<!-- index.php вызывает:
-
-get_header() → header.php -->
+<!-- index.php вызывает: get_header() → header.php -->
 
 
 <?php get_header(); ?>

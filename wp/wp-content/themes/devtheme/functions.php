@@ -48,6 +48,36 @@ function devtheme_register_menus() {
     
 }
 
+add_action('after_setup_theme', 'devtheme_register_menus');
+
+
+function devtheme_enqueue_scripts(){ 
+
+    wp_enqueue_script( //говорит WordPress подключить JS
+
+        'devtheme-main-js', //уникальный ID (имя которое мы даем)
+
+        get_template_directory_uri() . '/assets/js/main.js',  //путь к файлу
+
+        array(), //зависимости (например jquery)
+
+        '1.0',  //версия (для кеша)
+
+        true // true = подключить перед </body>  ||  // false = подключить в <head>
+        
+    );
+}
+
+add_action('wp_enqueue_scripts', 'devtheme_enqueue_scripts');
+
+
+
+
+
+
+
+
+
 // WordPress в определённый момент говорит:
 
 // "Я сейчас на этапе after_setup_theme. Есть ли функции, которые нужно выполнить?"
@@ -55,5 +85,3 @@ function devtheme_register_menus() {
 // И выполняет всё, что зарегистрировано через:
 
 // add_action('after_setup_theme', 'имя_функции');
-
-add_action('after_setup_theme', 'devtheme_register_menus');
