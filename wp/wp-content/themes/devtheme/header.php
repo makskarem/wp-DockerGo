@@ -15,13 +15,30 @@
 <body <?php body_class() ?>>
 
     <header>
+
         <?php bloginfo('name') ?>
+
+        <?php
+        wp_nav_menu(array(
+
+            // указываем какое меню выводить
+            'theme_location' => 'primary',
+
+        ))
+
+        ?>
+
     </header>
 
 <main>
 
 
-    <!-- ОБЪЯСНЕНИЕ
+
+
+
+
+
+        <!-- ОБЪЯСНЕНИЕ
 wp_head()
 
 Она позволяет WordPress вставлять:
