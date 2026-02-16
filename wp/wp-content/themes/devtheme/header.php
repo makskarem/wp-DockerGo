@@ -19,6 +19,15 @@
         <?php bloginfo('name') ?>
 
         <?php
+
+        // Что делает wp_nav_menu()
+
+        //     Он берет меню из админки и выводит HTML:
+
+        //     <ul>
+        //         <li><a href="/">Home</a></li>
+        //         <li><a href="/about">About</a></li>
+        //     </ul>
         wp_nav_menu(array(
 
             // указываем какое меню выводить
