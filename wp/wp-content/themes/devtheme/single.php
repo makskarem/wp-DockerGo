@@ -1,29 +1,80 @@
 <?php get_header() ?>
 
 
-<main>
+<!-- WordPress автоматически использует:
 
-    <?php if (have_posts()) : ?>
-        <?php while (have_posts()) : the_post() ?>
+single.php → для страницы одного поста
+
+Когда пользователь нажимает:
+
+Post title → открывается single.php -->
+
+<section class="single-post">
+
+    <?php
+    if (have_posts()):
+        while (have_posts()) : the_post() ?>
 
             <article>
 
-                <h1><?php the_title() ?></h1>
+                <!-- title -->
+                <h1>
+                    <?php the_title() ?>
+                </h1>
 
-                <p>
+                <!-- meta-info -->
 
-                    Автор: <?php the_author() ?>
-                    Дата: <?php the_date() ?>
+                <div class="post-meta">
 
-                </p>
+                    <span>
+                        Publisher: <?php the_date() ?>
+                    </span>
 
-                <?php the_content() ?>
+                    <span>
+                        Author: <?php the_author() ?>
+                    </span>
+
+                </div>
+
+
+                <!-- featured image -->
+
+                <?php if (has_post_thumbnail()): ?>
+
+                    <div class="post-image">
+                        <?php the_post_thumbnail('large') ?>
+                    </div>
+
+                <?php endif ?>
+
+                <!-- content -->
+
+                <div class="post-content">
+                    <?php the_content() ?>  <!--Выводит полный контент поста, a the_excerpt() → короткое описание-->
+                </div>
+
+
             </article>
+    <?php
 
-        <?php endwhile ?>
-    <?php endif ?>
+        endwhile;
 
-</main>
+    endif;
+
+    ?>
+
+</section>
 
 
 <?php get_footer() ?>
+
+
+<!-- User clicks post
+     ↓
+the_permalink()
+     ↓
+WordPress loads single.php
+     ↓
+WordPress Loop loads that post
+     ↓
+the_content() shows full content -->
