@@ -13,3 +13,80 @@ article {
     padding: 20px;
     margin: 20px;
 }
+
+.about {
+    padding: 40px;
+    background: #d8a5a5;
+}
+
+.contact {
+    padding: 40px;
+    background: #e4b0b0;
+}
+
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px;
+
+    background: black;
+    color: white;
+}
+
+.nav-menu {
+
+    display: flex;
+    gap: 20px;
+
+    list-style: none;
+}
+
+.nav-menu a {
+
+    color: white;
+    text-decoration: none;
+}
+
+.menu-toggle {
+    display: none;
+
+    background: white;
+    border: none;
+
+    padding: 10px;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+
+        display: none;
+        flex-direction: column;
+
+        background: black;
+
+        position: absolute;
+        top: 60px;
+        right: 20px;
+
+        padding: 20px;
+    }
+
+    .nav-menu.active {
+
+        display: flex;
+
+    }
+
+}

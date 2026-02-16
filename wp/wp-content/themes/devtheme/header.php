@@ -14,47 +14,53 @@
 
 <body <?php body_class() ?>>
 
-    <header>
+    <header class="site-header">
 
-        <?php bloginfo('name') ?>
+        <!-- Название сайта -->
+        <div class="site-logo">
+            <?php bloginfo('name') ?>
+        </div>
 
-        <?php
+        <!-- Кнопка mobile menu -->
+        <button class="menu-toggle">
+            Menu
+        </button>
 
-        // Что делает wp_nav_menu()
 
-        //     Он берет меню из админки и выводит HTML:
+        <!-- WordPress menu -->
+        <nav class="site-nav">
+            <?php
+                wp_nav_menu(array(
 
-        //     <ul>
-        //         <li><a href="/">Home</a></li>
-        //         <li><a href="/about">About</a></li>
-        //     </ul>
-        wp_nav_menu(array(
+                    // говорим WordPress какое меню выводить
+                    'theme_location' => 'primary',
 
-            // указываем какое меню выводить
-            'theme_location' => 'primary',
+                    // убираем лишний контейнер div
+                    'container' => 'false',
 
-        ))
+                    // добавляем CSS класс
+                    'menu_class' => 'nav_manu'
 
-        ?>
+                ));
+            ?>
+            
+        </nav>
+
+        <!--    Что делает wp_nav_menu() - Он берет меню из админки Appearance → Menus и выводит HTML:
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+            </ul> -->
+
 
     </header>
 
-<main>
-
-
-
-
-
-
+    <main>
 
         <!-- ОБЪЯСНЕНИЕ
-wp_head()
+        wp_head() - Она позволяет WordPress вставлять: Без неё плагины и стили не будут работать.
 
-Она позволяет WordPress вставлять:
-
-CSS
-JS
-meta
-плагины
-
-Без неё плагины и стили не будут работать. -->
+        CSS
+        JS
+        meta
+        плагины -->
