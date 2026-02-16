@@ -17,40 +17,35 @@
     <header class="site-header">
 
         <!-- Название сайта -->
-        <div class="site-logo">
-            <?php bloginfo('name') ?>
-        </div>
+        <div class="container header-container">
 
-        <!-- Кнопка mobile menu -->
-        <button class="menu-toggle">
-            Menu
-        </button>
+            <!-- Logo -->
+            <div class="logo">
+                <a href="<?php echo home_url() //home_url() - возвращает URL главной страницы; ?>">
+                    <?php bloginfo('name'); ?>
+                </a>
+            </div>
 
+            <!-- Navigation -->
 
-        <!-- WordPress menu -->
-        <nav class="site-nav">
-            <?php
-                wp_nav_menu(array(
-
-                    // говорим WordPress какое меню выводить
-                    'theme_location' => 'primary',
-
-                    // убираем лишний контейнер div
-                    'container' => 'false',
-
-                    // добавляем CSS класс
-                    'menu_class' => 'nav_manu'
-
-                ));
-            ?>
-            
-        </nav>
-
-        <!--    Что делает wp_nav_menu() - Он берет меню из админки Appearance → Menus и выводит HTML:
+            <!-- Что делает wp_nav_menu() - Он берет меню из админки Appearance → Menus и выводит HTML:
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
             </ul> -->
+
+            <nav class="main-nav">
+                <?php
+                wp_nav_menu(array(
+                    'theme_location' => 'primary',
+                    'container' => false,
+                    'menu_class' => 'nav-menu'
+                )); ?>
+            </nav>
+
+        </div>
+
+
 
 
     </header>

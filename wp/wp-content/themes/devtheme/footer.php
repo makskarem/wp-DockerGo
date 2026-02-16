@@ -1,15 +1,18 @@
 </main>
 
-<footer>
+<footer class="site-footer">
 
-    <!-- date показывает текущий год -->
-    <p>
-        © <?php echo date('Y') ?> My footer   
-    </p> 
-    
+    <div class="container">
+
+        <p>
+            © <?php echo date('Y'); ?> My Website
+        </p>
+
+    </div>
+
 </footer>
 
-<?php wp_footer() ?> 
+<?php wp_footer() ?>
 
 </body>
 </html>
