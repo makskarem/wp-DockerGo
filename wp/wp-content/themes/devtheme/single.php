@@ -1,6 +1,3 @@
-<?php get_header() ?>
-
-
 <!-- WordPress автоматически использует:
 
 single.php → для страницы одного поста
@@ -9,64 +6,65 @@ single.php → для страницы одного поста
 
 Post title → открывается single.php -->
 
+
+<?php get_header(); ?>
+<!-- подключает header.php -->
+
 <section class="single-post">
 
-    <?php
-    if (have_posts()):
-        while (have_posts()) : the_post() ?>
+    <div class="container">
 
-            <article>
+        <?php
 
-                <!-- title -->
-                <h1>
-                    <?php the_title() ?>
-                </h1>
+        // WordPress Loop — загружает текущий пост
+        if (have_posts()) :
 
-                <!-- meta-info -->
+            while (have_posts()) : the_post();
+            ?>
 
-                <div class="post-meta">
+                <article class="post">
 
-                    <span>
-                        Publisher: <?php the_date() ?>
-                    </span>
+                    <!-- Заголовок поста -->
+                    <h1 class="post-title">
+                        <?php the_title(); ?>
+                    </h1>
 
-                    <span>
-                        Author: <?php the_author() ?>
-                    </span>
+                    <!-- Meta информация -->
+                    <div class="post-meta">
 
-                </div>
+                        <span class="post-date">
+                            <?php echo get_the_date(); ?>
+                        </span>
+                        <!-- дата поста -->
 
+                        <span class="post-author">
+                            by <?php the_author(); ?>
+                        </span>
+                        <!-- автор поста -->
 
-                <!-- featured image -->
-
-                <?php if (has_post_thumbnail()): ?>
-
-                    <div class="post-image">
-                        <?php the_post_thumbnail('large') ?>
                     </div>
 
-                <?php endif ?>
+                    <!-- Контент поста -->
+                    <div class="post-content">
+                        <?php the_content(); ?>
+                    </div>
 
-                <!-- content -->
+                </article>
 
-                <div class="post-content">
-                    <?php the_content() ?>  <!--Выводит полный контент поста, a the_excerpt() → короткое описание-->
-                </div>
+            <?php
 
+            endwhile;
 
-            </article>
-    <?php
+        endif;
 
-        endwhile;
+        ?>
 
-    endif;
-
-    ?>
+    </div>
 
 </section>
 
+<?php get_footer(); ?>
 
-<?php get_footer() ?>
 
 
 <!-- User clicks post
