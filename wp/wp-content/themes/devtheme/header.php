@@ -23,6 +23,8 @@
             <div class="logo">
                 <a href="<?php echo home_url() //home_url() - возвращает URL главной страницы; ?>">
                     <?php bloginfo('name'); ?>
+                    <!-- выводит название сайта
+                        которое задается в Settings → General --> -->
                 </a>
             </div>
 
@@ -37,9 +39,11 @@
             <nav class="main-nav">
                 <?php
                 wp_nav_menu(array(
-                    'theme_location' => 'primary',
-                    'container' => false,
-                    'menu_class' => 'nav-menu'
+                    'theme_location' => 'primary', //theme_location - указывает какое меню выводить, primary - это ID, который мы зарегистрировали в functions.php
+                    'container' => false, // отключает автоматический <div> вокруг меню
+                    'menu_class' => 'nav-menu' // - задает CSS класс для <ul>. WordPress создаст:<ul class="nav-menu">
+                        
+                    
                 )); ?>
             </nav>
 

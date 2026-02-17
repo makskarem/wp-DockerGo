@@ -1,37 +1,57 @@
-<?php get_header(); ?>  <!-- подключает header.php -->
+<?php get_header(); ?> <!-- подключает header.php -->
 
-<main>
 
-    <h1>Главная странца</h1>
 
-    <?php if (have_posts()) : ?>  <!-- проверяет есть ли посты -->
+<section class="hero">
 
-        <?php while (have_posts()) : the_post() ?>  <!-- запускает Loop -->
+    <div class="container">
 
-            <article>
+        <!-- выводит название сайта -->
+        <h1 class="hero-title">
+            <?php bloginfo('name') ?>
+        </h1>
 
-                <h1>
 
-                    <!-- //the_permalink - возвращает URL поста, например: http://localhost/hello-world/ -->
-                    <!-- Если url показывает не то, что нужно, то в wp переходим в Settings - Permalinks - выбираем (Post name) и сохраняем изменения. -->
-                    <a href="<?php the_permalink() ?>">     
+        <!-- выводит описание сайта (Settings → General → Tagline) -->
+        <p class="hero-description">
+            <?php bloginfo('description') ?>
+        </p>
 
-                        <!-- the_title() → выводит заголовок поста -->
-                        <?php the_title() ?>
+        <a href="/blog" class="hero-button">
+            View Blog
+        </a>
 
-                    </a>
 
-                </h1>
 
-                <!-- the_content() → выводит содержимое поста -->
-                <?php the_content() ?>
+    </div>
 
-            </article>
+</section>
 
-        <?php endwhile; ?>  <!-- конец цикла -->
 
-    <?php endif; ?>
 
-</main>
 
-<?php get_footer() ?>  <!-- подключает footer.php -->
+
+
+<section class="homepage-content">
+
+    <div class="container">
+
+        <?php
+
+        // стандартный WordPress Loop
+        if (have_posts()) :
+            while (have_posts()) : the_post();
+
+                the_content();
+            // выводит контент страницы Home из админки
+
+            endwhile;
+        endif;
+
+        ?>
+
+    </div>
+
+</section>
+
+<?php get_footer() ?> <!-- подключает footer.php -->
