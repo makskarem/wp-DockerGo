@@ -1,24 +1,62 @@
 <?php get_header(); ?>
+<!-- подключает header -->
 
-<section class="contact">
+<section class="contact-page">
 
-    <h1>This is Contact page template</h1>
+    <div class="container">
 
-    <?php
-    if (have_posts()) :
-        while (have_posts()) : the_post();
-    ?>
+        <?php
+        if (have_posts()) :
+            while (have_posts()) : the_post();
+        ?>
 
-            <h2><?php the_title(); ?></h2>
+                <!-- Заголовок -->
+                <h1 class="contact-title">
+                    <?php the_title(); ?>
+                </h1>
 
-            <div>
-                <?php the_content(); ?>
-            </div>
+                <!-- Контент страницы -->
+                <div class="contact-content">
+                    <?php the_content(); ?>
+                </div>
 
-    <?php
-        endwhile;
-    endif;
-    ?>
+        <?php
+            endwhile;
+        endif;
+        ?>
+
+
+        <!-- Contact Form -->
+        <form class="contact-form">
+
+            <!-- Name -->
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required>
+
+            <!-- Email -->
+            <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required>
+
+            <!-- Message -->
+            <textarea
+                name="message"
+                placeholder="Your Message"
+                required></textarea>
+
+            <!-- Button -->
+            <button type="submit">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
 
 </section>
 

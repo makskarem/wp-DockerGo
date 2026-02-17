@@ -33,9 +33,51 @@ article {
     background: #d8a5a5;
 }
 
-.contact {
-    padding: 40px;
-    background: #e4b0b0;
+/* =========================
+   Contact Page
+========================= */
+
+.contact-title {
+
+    font-size: 42px;
+
+    margin-bottom: 20px;
+
+}
+
+.contact-form {
+
+    max-width: 600px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+}
+
+.contact-form input,
+.contact-form textarea {
+
+    padding: 10px;
+
+    border: 1px solid #ddd;
+
+}
+
+.contact-form button {
+
+    background: black;
+
+    color: white;
+
+    padding: 12px;
+
+    border: none;
+
+    cursor: pointer;
+
 }
 
 
@@ -146,14 +188,8 @@ article {
 
 }
 
-
-
 /* =================================================== */
 
-
-/* =========================
-   Blog
-========================= */
 
 .blog-title {
     font-size: 36px;
