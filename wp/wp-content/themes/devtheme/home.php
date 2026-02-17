@@ -1,80 +1,60 @@
 <?php get_header(); ?>
-
+<!-- подключает header.php -->
 
 <section class="blog">
 
-    <h1>Blog</h1>
+    <div class="container">
 
-    <div class="blog-grid">
+        <h1 class="blog-title">
+            Blog
+        </h1>
 
-        <?php
-        // WordPress Loop — выводит посты
+        <div class="blog-grid">
 
-        if (have_posts()):
-            while (have_posts()) : the_post()
-        ?>
+            <?php
 
-                <article class="blog-card">
+            // WordPress Loop — перебирает все посты
+            if (have_posts()) :
 
-                    <!-- featured image -->
-                    <?php if (has_post_thumbnail()): //has_post_thumbnail() - проверяет есть ли у поста изображение и если есть, то выполняет div?>  
+                while (have_posts()) : the_post();
+                ?>
 
-                        <div class="blog-image">
+                    <article class="blog-card">
 
-                            <?php the_post_thumbnail('medium'); ?>
+                        <h2 class="blog-card-title">
+                            <?php the_title(); ?>
+                            <!-- выводит заголовок поста -->
+                        </h2>
 
-                        </div>
+                        <p class="blog-card-excerpt">
+                            <?php the_excerpt(); ?>
+                            <!-- выводит краткое описание -->
+                        </p>
 
-                    <?php endif ?>
-
-                    <!-- title -->
-
-                    <h2 class="blog-title">
-
-                        <!-- the_permalink() - показывает заголовок поста, делает заголовок кликабельным, при клике открывается страница этого поста -->
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_title() ?>
+                        <a href="<?php the_permalink(); ?>" class="blog-card-button">   
+                            <!-- the_permalink() - показывает заголовок поста, делает заголовок кликабельным, при клике открывается страница этого поста -->
+                            Read More
                         </a>
+                        <!-- ссылка на полный пост -->
 
-                    </h2>
+                    </article>
 
+                <?php
 
-                    <!-- excerpt -->
+                endwhile;
 
-                    <div class="blog-excerpt">
+            else:
 
-                        <?php the_excerpt() ?>
+                echo "<p>No posts found</p>";
 
-                    </div>
+            endif;
 
-                </article>
+            ?>
 
-        <?php
-
-            endwhile;
-
-        else :
-
-            echo "<p>No posts found</p>";
-
-        endif;
-
-        ?>
+        </div>
 
     </div>
 
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
 
 <?php get_footer(); ?>

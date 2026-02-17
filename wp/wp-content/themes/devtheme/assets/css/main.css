@@ -151,12 +151,16 @@ article {
 /* =================================================== */
 
 
-.blog {
+/* =========================
+   Blog
+========================= */
 
-    padding: 40px;
-
+.blog-title {
+    font-size: 36px;
+    margin-bottom: 30px;
 }
 
+/* grid layout */
 .blog-grid {
 
     display: grid;
@@ -167,6 +171,7 @@ article {
 
 }
 
+/* card */
 .blog-card {
 
     border: 1px solid #ddd;
@@ -175,25 +180,37 @@ article {
 
 }
 
-.blog-image img {
+/* title */
+.blog-card-title {
 
-    width: 100%;
-    height: auto;
+    font-size: 22px;
+
+    margin-bottom: 10px;
 
 }
 
-.blog-title a {
+/* excerpt */
+.blog-card-excerpt {
 
-    color: black;
+    margin-bottom: 15px;
+
+}
+
+/* button */
+.blog-card-button {
+
+    display: inline-block;
+
+    background: black;
+
+    color: white;
+
+    padding: 8px 16px;
+
     text-decoration: none;
 
 }
 
-.blog-excerpt {
-
-    margin-top: 10px;
-
-}
 
 
 .site-main {
