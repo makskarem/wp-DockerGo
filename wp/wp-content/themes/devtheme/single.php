@@ -8,60 +8,74 @@ Post title → открывается single.php -->
 
 
 <?php get_header(); ?>
-<!-- подключает header.php -->
 
-<section class="single-post">
+<main class="container">
 
-    <div class="container">
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 
-        <?php
+            <article class="single-post">
 
-        // WordPress Loop — загружает текущий пост
-        if (have_posts()) :
+                <!-- Post header -->
+                <header class="post-header">
 
-            while (have_posts()) : the_post();
-            ?>
-
-                <article class="post">
-
-                    <!-- Заголовок поста -->
                     <h1 class="post-title">
                         <?php the_title(); ?>
                     </h1>
 
-                    <!-- Meta информация -->
                     <div class="post-meta">
 
                         <span class="post-date">
                             <?php echo get_the_date(); ?>
                         </span>
-                        <!-- дата поста -->
 
                         <span class="post-author">
                             by <?php the_author(); ?>
                         </span>
-                        <!-- автор поста -->
+
+                        <span class="post-category">
+                            <?php the_category(', '); ?>
+                        </span>
 
                     </div>
 
-                    <!-- Контент поста -->
-                    <div class="post-content">
-                        <?php the_content(); ?>
+                </header>
+
+                <!-- Featured image -->
+                <?php if (has_post_thumbnail()) : ?>
+
+                    <div class="post-thumbnail">
+                        <?php the_post_thumbnail('large'); ?>
                     </div>
 
-                </article>
+                <?php endif; ?>
 
-            <?php
+                <!-- Post content -->
+                <div class="post-content">
+                    <?php the_content(); ?>
+                </div>
 
-            endwhile;
+            </article>
+            <nav class="post-navigation">
 
-        endif;
+                <div class="nav-previous">
+                    <?php previous_post_link('%link', '← Previous post'); ?>
+                    <!-- previous_post_link() - Показывает ссылку на предыдущий пост -->
+                </div>
 
-        ?>
+                <div class="nav-next">
+                    <?php next_post_link('%link', 'Next post →'); ?>
+                    <!-- next_post_link() - Показывает ссылку на следующий пост -->
+                </div>
 
-    </div>
+            </nav>
 
-</section>
+    <?php
+        endwhile;
+    endif; ?>
+
+<?php comments_template(); ?> <!-- — подключает файл: comments.php -->
+ 
+</main>
 
 <?php get_footer(); ?>
 
