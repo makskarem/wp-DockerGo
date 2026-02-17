@@ -1,23 +1,48 @@
 <?php get_header(); ?>
+<!-- подключает header.php -->
 
-<main>
+<section class="page">
 
-<?php if (have_posts()) : ?>
+    <div class="container">
 
-    <?php while (have_posts()) : the_post(); ?>
+        <?php
 
-        <article>
+        // Loop загружает текущую страницу (About, Contact, etc)
+        if (have_posts()) :
 
-            <h1><?php the_title(); ?></h1>
+            while (have_posts()) : the_post();
+        ?>
 
-            <?php the_content(); ?>
+                <article class="page-content">
 
-        </article>
+                    <!-- Заголовок страницы -->
+                    <h1 class="page-title">
 
-    <?php endwhile; ?>
+                        <?php the_title(); ?>
+                        <!-- выводит About или Contact -->
 
-<?php endif; ?>
+                    </h1>
 
-</main>
+                    <!-- Контент страницы -->
+                    <div class="page-text">
+
+                        <?php the_content(); ?>
+                        <!-- выводит текст из редактора WordPress -->
+
+                    </div>
+
+                </article>
+
+        <?php
+
+            endwhile;
+
+        endif;
+
+        ?>
+
+    </div>
+
+</section>
 
 <?php get_footer(); ?>
