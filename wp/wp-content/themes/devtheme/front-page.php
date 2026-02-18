@@ -3,17 +3,12 @@
 
 
 <main class="site-main">
-
-    <?php
-    // подключает hero section
-    get_template_part('template-parts/sections/hero');
-    ?>
+    
+        <!-- // подключает hero section -->
+    <?php get_template_part('template-parts/sections/hero');?>
 
 
-    <?php
-    // подключает content section
-    get_template_part('template-parts/sections/content');
-    ?>
+    <?php get_template_part('template-parts/sections/about'); ?>
 
 
 </main>
